@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ .red{
+	 color:#F00;
+	 background-color:#CCC;
+	 border:2px solid #006;
+	 width:500px;
+	 height:500px;
+	 }
+ .yellow{
+	 color:#0C0;
+	 background-color:#FF9;
+	 border:2px solid #006;
+	 width:200px;
+	 height:200px;
+	 }
+</style>
+</head>
+
+<body>
+<input id="btn1" type="button" value="+" />
+<input id="btn2" type="button" value="-"/>
+<input id="btn3" type="button" value="红" />
+<input id="btn4" type="button" value="黄"/>
+
+<p id="p1">模具保养的好坏不仅仅只是会左右模具寿命，其还对生产计划有重大的影响，也会影响最终的制造成本。因此，担当模具保养工作的保养者必须慎重、细心地作业，努力保证模具能做到制造生产时最有效、最经济，尽可能的降低制造成本。</p>
+
+</body>
+
+<script>
+var Obtn1 = document.getElementById("btn1");
+var Obtn2 = document.getElementById("btn2");
+var Obtn3 = document.getElementById("btn3");
+var Obtn4 = document.getElementById("btn4");
+var Op1 = document.getElementById("p1");
+var num = 15;
+
+Obtn1.onclick = function(){
+	if (num<22){
+	    num ++;
+	     Op1.style.fontSize = num +'px' ;
+	}
+};
+Obtn2.onclick = function(){
+	if (num>8){
+		num --;
+		Op1.style.fontSize = num +'px' ;
+	}
+};
+Obtn3.onclick = function(){
+	Op1.className = "red";
+};
+Obtn4.onclick = function(){
+	Op1.className = "yellow";
+};
+</script>
+
+</html>

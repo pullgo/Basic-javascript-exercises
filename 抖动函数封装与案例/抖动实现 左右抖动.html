@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+#img1{
+	position:absolute;
+	top:100px;
+	left:150px;
+	width:280px;
+	border:2px solid #03F;
+}
+#img2{
+	position:absolute;
+	top:100px;
+	left:500px;
+	width:280px;
+	border:2px solid #03F;
+}
+</style>
+<script src="getStyle函数.js"></script>
+<script src="抖动函数.js"></script>
+<script>
+window.onload = function(){
+
+	var olmg1 = document.getElementById('img1');
+
+	var olmg2 = document.getElementById('img2');
+
+	olmg1.onclick = fnShake;//后面无需加括号
+
+	olmg2.onclick = fnShake;//后面无需加括号
+
+	function fnShake(){
+
+		var this1=this;
+
+		shake(this1,'left',function(){
+
+			shake(this1,'top');
+		});
+	}
+}
+		
+</script>
+</head>
+<body>
+<img id="img1" src="rondi-right.png"/>
+<img id="img2" src="rondi-left.png"/>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<style>
+#div1{
+	width:100px;
+	height:100px;
+	background:#03C;
+	position:absolute;
+	left:10px;
+	top:40px;
+}
+</style>
+</head>
+
+<body>
+	<input id="btn1" type="button" value="走"></input>
+	<div id="div1"></div>
+<script>
+var oBtn1=document.getElementById('btn1');
+var oDiv=document.getElementById('div1');
+//var timer=null;
+//oDiv.timer=null;自定义属性 
+oBtn1.onclick = function(){	
+	
+	doMove(oDiv,'left',20,800,function(){
+		
+		doMove(oDiv,'top',20,600);
+		
+	});
+	
+}
+	function doMove(obj,attr,dir,target,endFn){
+		
+		dir = parseInt(getStyle(obj,attr))<target?dir:-dir;//正负问题
+			
+		clearInterval(obj.timer);//否则会根据点击的次数 速度会愈来愈快
+		
+		obj.timer=setInterval(function(){
+		
+		    var speed = parseInt(getStyle(obj,attr))+dir;//parseInt 30px变成30,
+		  
+			if(speed > target && dir>0||speed < target && dir<0){//赋值前限制 步长无法被800整除时 停止的数据会大于800 前
+			    speed = target;
+			}
+	//if(speed < target && dir<0){//赋值前限制 步长无法被800整除时 停止的数据会大于800  后
+	    // speed = target;}
+		obj.style[attr] = speed +'px';//div如果不定位则无法解析
+	
+	//alert(parseInt(getStyle(oDiv,'left')));
+			if(speed == target){
+			
+				clearInterval(obj.timer);
+			
+			/*if(endFn){
+				endFn();//解决函数传参有或者没有问题  等价于endFn&&endFn(); 
+				}*/
+				 endFn&&endFn();
+			//alert(speed);
+			}
+		
+		},30)
+
+    function getStyle(obj,attr){
+    	
+		return obj.currentStyle?obj.currentStyle[attr]:getComputedStyle(obj)[attr];}
+	}
+	
+	
+		
+		
+</script>
+    
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+li{
+	list-style:none;
+	height:45px;
+	width:150px;
+	margin-right:10px;
+	float:left;
+	background:url(normer.jpg);
+}
+</style>
+</head>
+<body>
+	<ul>
+	    <li></li>
+	    <li></li>
+	    <li></li>
+	</ul>
+<script>
+//这样的写法 一个开关只能控制一组效果
+/*var aLi=document.getElementsByTagName('li');
+    for(var i=0;i<aLi.length;i++){
+		var onOff=true;
+		aLi[i].onclick = function(){
+			if(onOff){
+			this.style.background = 'url(active.jpg)';
+			onOff=false;
+			}else{
+			this.style.background = 'url(normer.jpg)';
+			}
+		};
+	}*/
+
+//用自定义属性			
+var aLi=document.getElementsByTagName('li');
+    for(var i=0;i<aLi.length;i++){
+		aLi[i].onOff = true;
+		aLi[i].onclick = function(){
+			if(this.onOff){
+			this.style.background = 'url(active.jpg)';
+			this.onOff=false;
+			}else{
+			this.style.background = 'url(normer.jpg)';
+			this.onOff=true;
+			}
+		};
+	}
+</script>
+</body>
+</html>

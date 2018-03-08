@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ul{
+  padding:0px;
+  margin:0px;
+}
+li{
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+.box{
+  width:300px;
+  height:400px;
+  position:relative;
+  float:right;
+  margin-right:150px;
+  background:url(5.jpg);
+  background-repeat:no-repeat;
+  background-position:center;
+}
+.box img{
+  width:300px;
+  height:400px;
+}
+.box ul{
+  position:absolute;
+  top:-20px;
+  right:-50px;
+}
+.box li{
+  width:50px;
+  height:50px;
+  margin-top:4px;
+  background-color:#9CC;
+}
+.box .active{
+  background-color:#069;
+}
+.box p{
+  bottom:0;
+}
+.box span{
+  top:0;
+}
+.box p,.box span{
+  position:absolute;
+  left:0px;
+  width:300px;
+  height:40px;
+  line-height:40px;
+  text-align:center;color:#006;
+}
+</style>
+<script>
+//优化后的代码：
+window.onload=function(){
+	fnTab("pic1",['1.jpg','2.jpg','3.jpg','4.jpg'],['图片一','图片二','图片三','图片四'],'onclick');
+	fnTab("pic2",['2.jpg','3.jpg','4.jpg'],['图片二','图片三','图片四'],'onmouseover');
+}
+function fnTab(id,arrUrl,arrText,evt){	
+  var oDiv=document.getElementById(id,arrUrl,arrText,evt);//括号里面的id不需要加“”
+  var num = 0;
+  var oImg=oDiv.getElementsByTagName('img')[0];
+  var oP=oDiv.getElementsByTagName('p')[0];
+  var oSpan=oDiv.getElementsByTagName('span')[0];
+  var oUl=oDiv.getElementsByTagName('ul')[0];
+  var aLi=oUl.getElementsByTagName('Li');//是从UL里面得到的元素 且后面没有[]
+    for(var i=0;i<arrUrl.length;i++){
+      oUl.innerHTML+='<li></li>';
+    }
+    function fnTab(){		
+      oImg.src=arrUrl[num];
+      oSpan.innerHTML=1+num+'/'+arrUrl.length;
+      oP.innerHTML=arrText[num];
+        for(var i=0;i<aLi.length;i++){
+        	aLi[i].className = '';
+        }
+        aLi[num].className='active';//等同于上一句 推理过程 this=aLi[0]  0=this.index this.index=num.
+    }
+    fnTab();
+  for(var i=0;i<aLi.length;i++){
+    aLi[i].index=i;
+    aLi[i][evt]= function(){
+      num=this.index;
+      fnTab();
+    }
+  }
+}
+</script>
+</head>
+<body>
+  <div id="pic1" class="box">
+    <img src=""/>
+    <p>文字说明正在加载中....</p>
+    <span>数量说明正在加载中....</span>
+    <ul></ul>
+  </div> 
+  <div id="pic2" class="box">
+    <img src=""/>
+    <p>文字说明正在加载中....</p>
+    <span>数量说明正在加载中....</span>
+    <ul></ul>
+  </div> 
+</body>
+</html>

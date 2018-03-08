@@ -1,0 +1,28 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+<style>
+body{
+	background:url(img.jpg) no-repeat center 0;text-align:center;
+}
+#timg{
+	display:none;
+}
+</style>
+</head>
+
+<body>
+<img id="timg" src="img/三只松鼠.jpg"/>
+<script>
+var Timg=document.getElementById('timg');
+	setTimeout(function(){
+		Timg.style.display='inline-block';
+	setTimeout(function(){
+		Timg.style.display='none';
+	},4000);
+},1000);
+</script>
+</body>
+</html>

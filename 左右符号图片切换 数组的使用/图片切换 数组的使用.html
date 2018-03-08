@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+
+<style>
+#content{
+	width:250px;
+	height:250px;
+	margin:auto;
+	position:relative;
+	margin-top:50px;
+	background-color:#FCF;
+}
+#content a:hover{
+	filter:alpha(opacity:90);
+	opacity:0.9;
+}
+#content a{
+	text-decoration:none;
+	margin:auto;
+}
+#prev{
+	width:40px;
+	height:40px;
+	background-color:#fff;
+	border:2px solid #FFF;
+	position:absolute;
+	bottom:100px;
+	left:0px;
+	color:#666;
+	font-size:30px;
+	line-height:40px;
+	text-align:center;
+	filter:alpha(opacity:30);
+	opacity:0.3;
+}
+#next{
+	width:40px;
+	height:40px;
+	background-color:#fff;
+	border:2px solid #FFF;
+	position:absolute;
+	bottom:100px;
+	right:0px;
+	color:#666;
+	font-size:30px;
+	line-height:40px;
+	text-align:center;
+	filter:alpha(opacity:30);
+	opacity:0.3;
+}
+#text1{
+	width:250px;
+	height:30px;
+	color:#666;
+	background-color:#fff;
+	line-height:30px;
+	text-align:center;
+	font-size:14px;
+	position:absolute;
+	bottom:0px;
+	left:0px;
+	filter:alpha(opacity:40);
+	opacity:0.4;
+}
+#span1{
+	width:250px;
+	height:30px;
+	color:#666;
+	background-color:#fff;
+	line-height:30px;
+	text-align:center;
+	font-size:14px;
+	position:absolute;
+	top:10px;
+	left:0px;
+	filter:alpha(opacity:40);
+	opacity:0.4;
+}
+#img1{
+	width:250px;
+	height:250px;
+}
+
+</style>
+<script>
+/*var arr = [852,586,897];
+alert(arr[arr.length-1]);查找最后一个数组的数据
+
+arr.push("000");往最后一个数组后面加数据
+alert(arr);
+
+总结：数组中的要用“”  ’‘ 包围 要不然显示不出来
+*/
+window.onload = function(){
+var oPrev = document.getElementById("prev");
+var oNext = document.getElementById("next");
+var oText = document.getElementById("text1");
+var oSpan = document.getElementById("span1");
+var oImg = document.getElementById("img1");
+var arrUrl= ["bbb_01.jpg","bbb_02.jpg","bbb_03.jpg","bbb_04.jpg"];
+var arrText= ["菜单","便签","主页","回收站"];
+var num = 0;
+//初始化
+	function fnTab(){
+	    oSpan.innerHTML = num+1 +"/"+arrUrl.length;
+		oImg.src = arrUrl[num];
+		oText.innerHTML =arrText[num];
+	}
+    fnTab();
+    oPrev.onclick = function(){
+		num --;
+		if(num ==-1){
+			num =arrText.length-1;
+		}
+		fnTab();	
+	};	
+    oNext.onclick = function(){
+		num ++;
+		if(num ==arrText.length){
+			num =0;
+		}
+    	fnTab();
+	};
+};
+</script>
+</head>
+
+<body>
+	<div id="content">
+		<a id="prev" href="javascript:;">&#60;</a>
+		<a id="next" href="javascript:;">&#62;</a>
+		<p id="text1">图片加载中</p>
+		<span id="span1">数量正在计算中</span>
+		<img id="img1">
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

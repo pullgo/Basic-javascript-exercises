@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+
+<script>
+/*
+系统时间对象
+alert(new Date());
+*/
+window.onload = function(){
+  var oBody = document.body;
+  var oP = document.getElementById('time');
+  var oImg = document.getElementsByTagName('img');
+  setInterval(fnTime,1000);
+  function fnTime(){
+    var myTime = new Date();
+    var iHours = myTime.getHours();
+    var iMin = myTime.getMinutes();
+    var iSec = myTime.getSeconds();
+    var str = toTwo(iHours)+toTwo(iMin)+toTwo(iSec);
+//str = '165050';
+//alert(iWeek);
+    oP.innerHTML =str;
+  //str.charAt(5)
+    oImg[5].src = str.charAt(5)+'.jpg';
+    oImg[4].src = str.charAt(4)+'.jpg';
+    oImg[3].src = str.charAt(3)+'.jpg';
+    oImg[2].src = str.charAt(2)+'.jpg';
+    oImg[1].src = str.charAt(1)+'.jpg';
+    oImg[0].src = str.charAt(0)+'.jpg';
+  }
+};
+//alert(toTwo(5));//'05'
+//alert(toTwo(15));//'15'
+function toTwo(n){
+	if(n<10){
+		return'0'+n;
+	}else{
+		return''+n
+	}
+};
+//toTwo 简化 后是return n<10?'0'+n:''+n;
+</script>
+</head>
+<body>
+<p id="time" style="font-size:68px;"></p>
+<img src="0.jpg" style="widt:80px;height:80px;">
+<img src="0.jpg" style="widt:80px;height:80px;">
+<img src="0.jpg" style="widt:80px;height:80px;">
+<img src="0.jpg" style="widt:80px;height:80px;">
+<img src="0.jpg" style="widt:80px;height:80px;">
+<img src="0.jpg" style="widt:80px;height:80px;">
+</body>
+</html>

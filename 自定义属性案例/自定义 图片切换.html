@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>无标题文档</title>
+<style>
+ul{
+  padding:0px;
+  marging:0px;
+}
+li{
+  list-style:none;
+  padding:0px;
+  margin:0px;
+}
+#pic{
+  width:600px;
+  height:800px;
+  position:relative;
+  margin:0 auto;
+  background:url(5.jpg);
+  background-repeat:no-repeat;
+  background-position:center;
+}
+#pic img{
+  width:600px;
+  height:800px;
+}
+#pic ul{
+  position:absolute;
+  top:-20px;
+  right:-50px;
+}
+#pic li{
+  width:50px;
+  height:50px;
+  margin-top:4px;
+  background-color:#9CC;
+}
+#pic .active{
+  background-color:#069;
+}
+#pic p{
+  bottom:0;
+}
+#pic span{
+  top:0;
+}
+#pic p,#pic span{
+  position:absolute;
+  left:0px;
+  width:600px;
+  height:40px;
+  line-height:40px;
+  text-align:center;color:#006;
+}
+</style>
+</head>
+<body>
+  <div id="pic">
+    <img src=""/>
+    <p>文字说明正在加载中....</p>
+    <span>数量说明正在加载中....</span>
+    <ul></ul>
+  </div> 
+<script>
+//优化后的代码：
+var arrUrl=['1.jpg','2.jpg','3.jpg','4.jpg'];
+var arrText=['图片一','图片二','图片三','图片四'];
+var num = 0;
+var oDiv=document.getElementById('pic');
+var oImg=oDiv.getElementsByTagName('img')[0];
+var oP=oDiv.getElementsByTagName('p')[0];
+var oSpan=oDiv.getElementsByTagName('span')[0];
+var oUl=oDiv.getElementsByTagName('ul')[0];
+var aLi=oUl.getElementsByTagName('Li');//是从UL里面得到的元素 且后面没有[]
+
+for(var i=0;i<arrUrl.length;i++){
+  oUl.innerHTML+='<li></li>';
+}
+function fnTab(){		
+  oImg.src=arrUrl[num];
+  oSpan.innerHTML=1+num+'/'+arrUrl.length;
+  oP.innerHTML=arrText[num];
+  for(var i=0;i<aLi.length;i++){
+		aLi[i].className = '';
+  }
+  aLi[num].className='active';//等同于上一句 推理过程 this=aLi[0]  0=this.index this.index=num.
+}
+  fnTab();
+for(var i=0;i<aLi.length;i++){
+	aLi[i].index=i;
+	aLi[i].onclick = function(){
+		num=this.index;
+    fnTab();
+  }
+}
+  
+  
+  
+  
+/*未优化代码
+var arrUrl=['1.jpg','2.jpg','3.jpg','4.jpg'];
+var arrText=['图片一','图片二','图片三','图片四'];
+var num = 0;
+var oDiv=document.getElementById('pic');
+var oImg=oDiv.getElementsByTagName('img')[0];
+var oP=oDiv.getElementsByTagName('p')[0];
+var oSpan=oDiv.getElementsByTagName('span')[0];
+var oUl=oDiv.getElementsByTagName('ul')[0];
+var aLi=oUl.getElementsByTagName('Li');//是从UL里面得到的元素 且后面没有[]
+
+    for(var i=0;i<arrUrl.length;i++){
+		oUl.innerHTML+='<li></li>';
+		}
+		
+//初始化		
+   oImg.src=arrUrl[num];
+   oSpan.innerHTML=1+num+'/'+arrUrl.length;
+   oP.innerHTML=arrText[num];
+   aLi[num].className='active';
+   
+   num=this.index;
+    for(var i=0;i<aLi.length;i++){
+		aLi[i].index=i;
+		aLi[i].onclick = function(){
+			
+			oImg.src=arrUrl[this.index];//是this index 不是index
+			oP.innerHTML=arrText[this.index];
+			oSpan.innerHTML=1+this.index+'/'+arrUrl.length;
+			
+			
+// 点击图标 颜色显示 思路一  全部清空当前添加 效果好
+    for(var i=0;i<aLi.length;i++){
+			aLi[i].className = '';
+	           }
+			   this.className = 'active';
+			}
+		}
+/* 点击图标 颜色显示 思路二  清空山一个 当前添加
+     var oldLi=null;
+		oldLi = aLi[num];//  当前添li出来后加这句 切记切记
+			oldLi.className='';
+			  oldLi=this;
+			   this.className = 'active';*/
+   
+</script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>无标题文档</title>
+</head>
+
+<body>
+<input type="button" value="换背景吧"></input>
+<input type="button" value="停"></input>
+<script>
+//for(var i=0;i<3;i++){document.title=i;}
+var oBody=document.body;
+var oBtn=document.getElementsByTagName('input');
+var arrUrl=['img/1.jpg','img/2.jpg','img/3.jpg','img/4.jpg','img/5.jpg'];
+var num = 0;
+var timer = null;
+
+oBtn[0].onclick = function(){
+	
+	clearInterval(timer);
+	
+	timer= setInterval(function(){
+		
+		oBody.style.background = 'url('+arrUrl[num]+')';
+
+		num++;
+
+		num%=arrUrl.length;//等于数组的长度即停下来
+
+	},1000);
+
+	oBtn[1].onclick = function(){
+
+		clearInterval(timer);
+    }
+}
+</script>
+</body>
+</html>
